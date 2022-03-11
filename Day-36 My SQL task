@@ -1,0 +1,143 @@
+	Day-36 My SQL task
+The Following are the tables has to be in your database & model deisgn:
+
+users
+codekata
+attendance
+topics
+tasks
+company_drives
+mentors
+students_activated_courses
+courses
+
+
+The following are the queries need to be executed
+
+
+1. Create tables for the above list given
+2. insert at least 5 rows of values in each table
+3. get number problems solved in codekata by combining the users
+4. display the no of company drives attended by a user
+5. combine and display students_activated_courses and courses for a specific user groping them based on the course
+6. list all the mentors
+7. list the number of students that are assigned for a mentor
+
+
+1.a. CREATE TABLE users (
+  SNo INTEGER PRIMARY KEY,
+  UserName TEXT NOT NULL,
+);
+
+1.b. CREATE TABLE codekata  (
+  SNo INTEGER PRIMARY KEY,
+  Topics TEXT NOT NULL,
+  Total_problems INTEGER
+); 
+
+1.c. CREATE TABLE attendance   (
+  RollNo INTEGER PRIMARY KEY,
+  TotalClasses INTEGER,
+  ClassesAttended INTEGER
+);
+
+1.d. CREATE TABLE topics    (
+  TopicNo  INTEGER PRIMARY KEY,
+  TopicName  INTEGER,
+  NoOfTopicsCovered  INTEGER
+);
+
+
+1.e. CREATE TABLE tasks   (
+  TaskNo INTEGER PRIMARY KEY,
+  Totaltasks INTEGER,
+  TaskSubmitted INTEGER
+);
+
+
+1.f. CREATE TABLE company_drives (
+  CompanyId INTEGER PRIMARY KEY,
+  CompanyName  TEXT NOT NULL,
+);
+
+
+1.g. CREATE TABLE mentors (
+  MentorId  INTEGER PRIMARY KEY,
+  MentorName  TEXT NOT NULL,
+);
+
+
+
+1.h. CREATE TABLE students_activated_courses  (
+  CourseId  INTEGER PRIMARY KEY,
+  CourseName  TEXT NOT NULL,
+);
+
+
+1.i. CREATE TABLE courses  (
+  CourseId  INTEGER PRIMARY KEY,
+  CourseName  TEXT NOT NULL,
+);
+
+ 
+2.a. i.	INSERT INTO users (SNo, UserName ) values (1, "Madhu");
+ii.	INSERT INTO users (SNo, UserName) values (2, "Saran");
+iii.	INSERT INTO users (SNo, UserName) values (3, "Hari");
+iv.	INSERT INTO users (SNo, UserName) values (4, "James");
+v.	INSERT INTO users (SNo, UserName) values (5, "Dayana");
+
+
+2.b.i.	INSERT INTO codekata  (SNo, Topics, Total_problems ) values (1, "beginner", 10);
+ii.	INSERT INTO codekata  (SNo, Topics, Total_problems ) values (2, "arrays", 50);
+iii.	INSERT INTO codekata  (SNo, Topics, Total_problems ) values (3, "numbers", 30);
+iv.	INSERT INTO codekata  (SNo, Topics, Total_problems ) values (4, "strings", 20);
+v.	INSERT INTO codekata  (SNo, Topics, Total_problems ) values (5, "basics", 10);
+
+
+2.c.i.	INSERT INTO attendance  (RollNo ,TotalClasses,ClassesAttended)  values (1,90,88);
+ii.	INSERT INTO attendance  (RollNo ,TotalClasses,ClassesAttended) values (2,90,90);
+iii.	INSERT INTO attendance  (RollNo ,TotalClasses,ClassesAttended) values (3, 90, 85);
+iv.	INSERT INTO attendance  (RollNo ,TotalClasses,ClassesAttended) values (4, 90, 86);
+v.	INSERT INTO attendance  (RollNo ,TotalClasses,ClassesAttended) values (5,90,80 );
+
+2.d.i.	INSERT INTO topics   (TopicNo, TopicName, NoOfTopicsCovered)  values (1,"HTML",5);
+ii.	INSERT INTO topics   (TopicNo, TopicName, NoOfTopicsCovered) values (2,"CSS",2);
+iii.	INSERT INTO topics   (TopicNo, TopicName, NoOfTopicsCovered) values (3, "JS", 10);
+iv.	INSERT INTO topics   (TopicNo, TopicName, NoOfTopicsCovered) values (4, "React JS", 10);
+v.	INSERT INTO topics   (TopicNo, TopicName, NoOfTopicsCovered) values (5,"Node JS",5 );
+
+2.e.i.	INSERT INTO tasks (TaskNo , Totaltasks, TaskSubmitted )  values (1,30,20);
+ii.	INSERT INTO tasks (TaskNo , Totaltasks, TaskSubmitted )  values (2,30,28);
+iii.	INSERT INTO tasks (TaskNo , Totaltasks, TaskSubmitted ) values (3, 30, 17);
+iv.	INSERT INTO tasks (TaskNo , Totaltasks, TaskSubmitted )  values (4, 30, 26);
+v.	INSERT INTO tasks (TaskNo , Totaltasks, TaskSubmitted )  values (5,30,30 );
+
+2.f.i.	INSERT INTO company_drives (CompanyId , CompanyName)  values (1,"Wipro");
+ii.	INSERT INTO company_drives (CompanyId , CompanyName)  values (2,"CTS");
+iii.	INSERT INTO company_drives (CompanyId , CompanyName) values (3, "Accenture");
+iv.	INSERT INTO company_drives (CompanyId , CompanyName)  values (4, "Oracle");
+v.	INSERT INTO company_drives (CompanyId , CompanyName)  values (5,"Zoho" );
+
+2.g.i.	INSERT INTO mentors (MentorId , MentorName)  values (1,"Sai Mohan");
+ii.	INSERT INTO mentors (MentorId , MentorName)  values (2,"Lavish");
+iii.	INSERT INTO mentors (MentorId , MentorName)  values (3,"Raghav");
+iv.	INSERT INTO mentors (MentorId , MentorName)  values (4,"Praksh");
+v.	INSERT INTO mentors (MentorId , MentorName)  values (5,"Dhivya");
+
+2.h.i.	INSERT INTO students_activated_courses(CourseId , CourseName  )  values (1,"Full stack Developer");
+ii.	INSERT INTO students_activated_courses(CourseId , CourseName  )  values (2,"Data science");
+iii.	INSERT INTO students_activated_courses(CourseId , CourseName  )  values (3,"Dark Web");
+iv.	INSERT INTO students_activated_courses(CourseId , CourseName  )  values (4,"Data Visualization");
+v.	INSERT INTO students_activated_courses(CourseId , CourseName  )  values (5,"Python");
+
+2.i. i.	INSERT INTO courses (CourseId , CourseName  )  values (1,"Full stack Developer");
+ii.	INSERT INTO courses (CourseId , CourseName  )  values (2,"Data science");
+iii.	INSERT INTO courses (CourseId , CourseName  )  values (3,"Dark Web");
+iv.	INSERT INTO courses (CourseId , CourseName  )  values (4,"Data Visualization");
+v.	INSERT INTO courses (CourseId , CourseName  )  values (5,"Python");
+
+3.select UserName , Total_problems  from users inner join codekata on users.SNo = codekata.SNo
+4.select UserName , CompanyName  from users inner join company_drives  on users.SNo = company_drives.CompanyId
+5.select UserName , CourseName  from users inner join students_activated_courses  on users.SNo = students_activated_courses.CourseId6
+6.SELECT MentorName FROM mentors;
+7.select UserName , MentorName  from users inner join mentors  on SNo = MentorId 
